@@ -1,72 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Science Companion</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Science Companion</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
+  <header class="hero">
     <h1>🧪 Science Companion</h1>
-
-    <div class="card">
-
-<h2>👋 Welcome back, Jodie!</h2>
-
-<h3 id="xp">⭐ XP: 0</h3>
-
-<h3 id="streak">🔥 Study Streak: 0 days</h3>
-
-</div>
-
     <p>Your Open University Study Dashboard</p>
+  </header>
 
-    <nav>
-        <a href="#">🏠 Home</a>
-        <a href="#">📚 Units</a>
-        <a href="#">📝 Notes</a>
-        <a href="#">❓ Quiz</a>
-    </nav>
+  <main class="dashboard">
 
-    <div class="card">
-        <h2>📚 Current Modules</h2>
+    <section class="card">
+      <h2>👋 Welcome back, Jodie!</h2>
+      <p>Ready for another study session?</p>
+    </section>
 
-        <p>🧬 S111 – Questions in Science</p>
+    <section class="card progress">
+      <h2>⭐ Progress</h2>
+      <p>Level 1</p>
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+      <p>XP: 0 / 100</p>
+    </section>
 
-        <p>🔬 S112 – Science: Concepts and Practice</p>
-    </div>
+    <section class="grid">
 
-    <div class="card">
-        <h2>⭐ Progress</h2>
+      <a href="unit00.html" class="tile">
+        <h3>📖 Unit 00</h3>
+        <p>Welcome & Study Skills</p>
+      </a>
 
-        <progress value="20" max="100"></progress>
+      <a href="units.html" class="tile">
+        <h3>🧬 S111</h3>
+        <p>Questions in Science</p>
+      </a>
 
-        <p>20% Complete</p>
-    </div>
+      <a href="units.html" class="tile">
+        <h3>🔬 S112</h3>
+        <p>Science: Concepts & Practice</p>
+      </a>
 
-    <div class="card">
-        <h2>🎯 Today's Goal</h2>
+      <a href="quiz.html" class="tile">
+        <h3>❓ Quiz</h3>
+        <p>Test your knowledge</p>
+      </a>
 
-        <p id="goal">
-            Complete one lesson from S111.
-        </p>
+    </section>
 
-        <button onclick="changeGoal()">
-            New Goal
-        </button>
-    </div>
+    <section class="card">
+      <h2>🎯 Today's Mission</h2>
+      <p>Complete Unit 00 and earn your first 100 XP!</p>
+    </section>
 
-    <button onclick="window.location='units.html'">
-    🚀 Continue Studying
-</button>
+  </main>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
-
 </html>
