@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Science Companion</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>🧪 Science Companion</h1>
+
+    <div class="card">
+
+<h2>👋 Welcome back, Jodie!</h2>
+
+<h3 id="xp">⭐ XP: 0</h3>
+
+<h3 id="streak">🔥 Study Streak: 0 days</h3>
+
+</div>
+
+    <p>Your Open University Study Dashboard</p>
+
+    <nav>
+        <a href="#">🏠 Home</a>
+        <a href="#">📚 Units</a>
+        <a href="#">📝 Notes</a>
+        <a href="#">❓ Quiz</a>
+    </nav>
+
+    <div class="card">
+        <h2>📚 Current Modules</h2>
+
+        <p>🧬 S111 – Questions in Science</p>
+
+        <p>🔬 S112 – Science: Concepts and Practice</p>
+    </div>
+
+    <div class="card">
+        <h2>⭐ Progress</h2>
+
+        <progress value="20" max="100"></progress>
+
+        <p>20% Complete</p>
+    </div>
+
+    <div class="card">
+        <h2>🎯 Today's Goal</h2>
+
+        <p id="goal">
+            Complete one lesson from S111.
+        </p>
+
+        <button onclick="changeGoal()">
+            New Goal
+        </button>
+    </div>
+
+    <button onclick="window.location='units.html'">
+    🚀 Continue Studying
+</button>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
