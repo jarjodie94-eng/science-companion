@@ -99,7 +99,7 @@ Checking progress...
 
 <p>Science and Observation</p>
 
-<p>
+<p id="unit01Status">
 ▶ Start Unit
 </p>
 
@@ -265,11 +265,26 @@ if (unit00Complete) {
     unitStatus.textContent =
     "✅ Completed";
 
-    progressText.textContent =
-    "✅ Unit 00 completed";
+    const unit01Complete =
+    localStorage.getItem("unit01Complete") === "true";
 
-    progressFill.style.width =
-    "100%";
+    if (unit01Complete) {
+
+        progressText.innerHTML =
+        "✅ Unit 00 completed<br>✅ Unit 01 completed";
+
+        progressFill.style.width =
+        "100%";
+
+    } else {
+
+        progressText.textContent =
+        "✅ Unit 00 completed";
+
+        progressFill.style.width =
+        "50%";
+
+    }
 
 }
 
@@ -364,6 +379,25 @@ if (completedUnitsText) {
     completedUnitsText.textContent =
     "📚 Units completed: " +
     completedUnits;
+
+}
+// ======================================
+// ✅ UNIT 01 TILE STATUS
+// ======================================
+
+const unit01Status =
+document.getElementById("unit01Status");
+
+if (unit01Status) {
+
+    if (
+        localStorage.getItem("unit01Complete") === "true"
+    ) {
+
+        unit01Status.textContent =
+        "✅ Completed";
+
+    }
 
 }
 </script>
