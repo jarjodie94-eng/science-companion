@@ -1,59 +1,578 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<title>Unit 00 Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Unit 00 Quiz - Science Companion</title>
 
 <link rel="stylesheet" href="style.css">
 
 </head>
 
+
 <body>
 
-<div class="card">
 
-<h1>📝 Unit 00 Quiz</h1>
+<header class="hero">
 
-<h2>Question 1</h2>
+<h1>❓ Unit 00 Quiz</h1>
 
-<p>How long is a good study session?</p>
+<p>S111 - Questions in Science</p>
+
+</header>
+
+
+<nav class="navbar">
+
+<a href="index.html">🏠 Home</a>
+
+<a href="units.html">📚 Modules</a>
+
+<a href="planner.html">📅 Planner</a>
+
+<a href="notes.html">📝 Notes</a>
+
+<a href="flashcards.html">🧠 Flashcards</a>
+
+<a href="quiz.html">❓ Quiz</a>
+
+<a href="achievements.html">🏆 Achievements</a>
+
+</nav>
+
+
+<main class="dashboard">
+
+
+<section class="card">
+
+<h2>🏆 Your Best Score</h2>
+
+<p id="bestQuizScore">
+No attempts yet
+</p>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>Question 1 🟢</h2>
+
+<p><strong>What is science mainly based on?</strong></p>
 
 <label>
 <input type="radio" name="q1" value="wrong">
-5 minutes
+Personal opinions
 </label>
 
 <br><br>
 
 <label>
 <input type="radio" name="q1" value="correct">
-25–30 minutes
+Evidence, observation and testing
 </label>
 
 <br><br>
 
 <label>
 <input type="radio" name="q1" value="wrong">
-3 hours without a break
+Guessing the answer
+</label>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>Question 2 🟢</h2>
+
+<p><strong>Why are good notes useful?</strong></p>
+
+<label>
+<input type="radio" name="q2" value="correct">
+They help you understand and remember information
 </label>
 
 <br><br>
 
-<button onclick="checkQuiz()">
-Submit Answer
+<label>
+<input type="radio" name="q2" value="wrong">
+They remove the need to study
+</label>
+
+<br><br>
+
+<label>
+<input type="radio" name="q2" value="wrong">
+They are only needed for exams
+</label>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>Question 3 🟡</h2>
+
+<p><strong>Why do scientists repeat experiments?</strong></p>
+
+<label>
+<input type="radio" name="q3" value="correct">
+To check whether results are reliable
+</label>
+
+<br><br>
+
+<label>
+<input type="radio" name="q3" value="wrong">
+To make the results look better
+</label>
+
+<br><br>
+
+<label>
+<input type="radio" name="q3" value="wrong">
+To avoid collecting evidence
+</label>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>Question 4 🟡</h2>
+
+<p><strong>Why is planning study time helpful?</strong></p>
+
+<label>
+<input type="radio" name="q4" value="correct">
+It helps organise learning and manage workload
+</label>
+
+<br><br>
+
+<label>
+<input type="radio" name="q4" value="wrong">
+It means you never need breaks
+</label>
+
+<br><br>
+
+<label>
+<input type="radio" name="q4" value="wrong">
+It replaces understanding the subject
+</label>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>Question 5 🔵</h2>
+
+<p>
+<strong>
+A scientist changes one factor in an experiment while keeping the others the same. Why?
+</strong>
+</p>
+
+<label>
+<input type="radio" name="q5" value="correct">
+To investigate how that factor affects the result
+</label>
+
+<br><br>
+
+<label>
+<input type="radio" name="q5" value="wrong">
+To remove the need for evidence
+</label>
+
+<br><br>
+
+<label>
+<input type="radio" name="q5" value="wrong">
+To make the experiment impossible to repeat
+</label>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>🏁 Finish Quiz</h2>
+
+<button id="submitQuizButton">
+✅ Submit Quiz
+</button>
+
+&nbsp;
+
+<button id="retryQuizButton">
+🔁 Start Again
 </button>
 
 <h2 id="result"></h2>
 
-<br>
+<p id="quizRewardMessage"></p>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>🧪 Nova Says</h2>
+
+<p id="quizNova">
+
+Take your time. Try to think through each answer before choosing.
+
+</p>
+
+</section>
+
+
 
 <button onclick="location.href='unit00.html'">
-⬅ Back to Lesson
+
+⬅ Back to Unit 00
+
 </button>
 
-</div>
+
+</main>
+
+
 
 <script src="script.js"></script>
 
+
+<script>
+
+/* ======================================
+   UNIT 00 QUIZ
+====================================== */
+
+const quizQuestions = [
+    "q1",
+    "q2",
+    "q3",
+    "q4",
+    "q5"
+];
+
+
+const submitQuizButton =
+document.getElementById("submitQuizButton");
+
+const retryQuizButton =
+document.getElementById("retryQuizButton");
+
+const quizResult =
+document.getElementById("result");
+
+const quizRewardMessage =
+document.getElementById("quizRewardMessage");
+
+const bestQuizScore =
+document.getElementById("bestQuizScore");
+
+const quizNova =
+document.getElementById("quizNova");
+
+
+
+function showBestQuizScore() {
+
+    const best =
+    Number(
+        localStorage.getItem("unit00QuizBest")
+    ) || 0;
+
+
+    if (bestQuizScore) {
+
+        if (best === 0) {
+
+            bestQuizScore.textContent =
+            "No attempts yet";
+
+        }
+
+        else {
+
+            bestQuizScore.textContent =
+            "⭐ Best score: " +
+            best +
+            " / 5";
+
+        }
+
+    }
+
+}
+
+
+
+function calculateQuizScore() {
+
+    let score = 0;
+
+    let answered = 0;
+
+
+    quizQuestions.forEach(function(question) {
+
+        const selected =
+        document.querySelector(
+            'input[name="' +
+            question +
+            '"]:checked'
+        );
+
+
+        if (selected) {
+
+            answered++;
+
+            if (selected.value === "correct") {
+
+                score++;
+
+            }
+
+        }
+
+    });
+
+
+    return {
+        score: score,
+        answered: answered
+    };
+
+}
+
+
+
+function getQuizReward(score) {
+
+    if (score === 5) {
+        return 50;
+    }
+
+    if (score >= 3) {
+        return 20;
+    }
+
+    return 10;
+
+}
+
+
+
+submitQuizButton.addEventListener(
+    "click",
+    function() {
+
+        const quiz =
+        calculateQuizScore();
+
+
+        if (quiz.answered < 5) {
+
+            quizResult.textContent =
+            "⚠️ Answer all 5 questions first.";
+
+            quizRewardMessage.textContent = "";
+
+            return;
+
+        }
+
+
+        const oldBest =
+        Number(
+            localStorage.getItem(
+                "unit00QuizBest"
+            )
+        ) || 0;
+
+
+        if (quiz.score > oldBest) {
+
+            localStorage.setItem(
+                "unit00QuizBest",
+                quiz.score
+            );
+
+        }
+
+
+        const rewardTarget =
+        getQuizReward(quiz.score);
+
+
+        const alreadyAwarded =
+        Number(
+            localStorage.getItem(
+                "unit00QuizXPAwarded"
+            )
+        ) || 0;
+
+
+        const xpToAward =
+        Math.max(
+            0,
+            rewardTarget - alreadyAwarded
+        );
+
+
+        if (
+            xpToAward > 0 &&
+            typeof addXP === "function"
+        ) {
+
+            addXP(xpToAward);
+
+            localStorage.setItem(
+                "unit00QuizXPAwarded",
+                rewardTarget
+            );
+
+        }
+
+
+        if (quiz.score === 5) {
+
+            quizResult.textContent =
+            "🏆 Perfect score! 5 / 5";
+
+            quizNova.textContent =
+            "🎉 Fantastic! You got every question right!";
+
+
+            if (
+                typeof unlockAchievement ===
+                "function"
+            ) {
+
+                unlockAchievement(
+                    "quizMaster",
+                    "🧠 Quiz Master",
+                    "Scored 100% on a quiz!",
+                    25
+                );
+
+            }
+
+        }
+
+        else if (quiz.score === 4) {
+
+            quizResult.textContent =
+            "🌟 Excellent! 4 / 5";
+
+            quizNova.textContent =
+            "You're very close to a perfect score!";
+
+        }
+
+        else if (quiz.score === 3) {
+
+            quizResult.textContent =
+            "👍 Good progress! 3 / 5";
+
+            quizNova.textContent =
+            "Nice work. Review the flashcards and try again when you're ready.";
+
+        }
+
+        else {
+
+            quizResult.textContent =
+            "🌱 Score: " +
+            quiz.score +
+            " / 5";
+
+            quizNova.textContent =
+            "That's okay. Use your notes and flashcards, then have another go.";
+
+        }
+
+
+        if (xpToAward > 0) {
+
+            quizRewardMessage.textContent =
+            "⭐ +" +
+            xpToAward +
+            " XP earned!";
+
+        }
+
+        else {
+
+            quizRewardMessage.textContent =
+            "✅ Score recorded. You've already earned the XP reward for this level.";
+
+        }
+
+
+        showBestQuizScore();
+
+    }
+);
+
+
+
+retryQuizButton.addEventListener(
+    "click",
+    function() {
+
+        document
+        .querySelectorAll(
+            'input[type="radio"]'
+        )
+        .forEach(function(answer) {
+
+            answer.checked = false;
+
+        });
+
+
+        quizResult.textContent = "";
+
+        quizRewardMessage.textContent = "";
+
+        quizNova.textContent =
+        "🧪 Fresh attempt! Take your time and think through each question.";
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+);
+
+
+
+showBestQuizScore();
+
+</script>
+
+
 </body>
+
 </html>

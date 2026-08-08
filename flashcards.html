@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🧠 Flashcards - Science Companion</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="hero">
+
+<h1>🧠 Flashcards</h1>
+
+<p>Recall first. Reveal second. Remember longer.</p>
+
+</header>
+
+
+<nav class="navbar">
+
+<a href="index.html">🏠 Home</a>
+
+<a href="units.html">📚 Modules</a>
+
+<a href="planner.html">📅 Planner</a>
+
+<a href="notes.html">📝 Notes</a>
+
+<a href="flashcards.html">🧠 Flashcards</a>
+
+<a href="quiz.html">❓ Quiz</a>
+
+<a href="achievements.html">🏆 Achievements</a>
+
+</nav>
+
+
+<main class="dashboard">
+
+
+<section class="card">
+
+<h2>⭐ Flashcard Progress</h2>
+
+<p id="flashcardProgress">
+0 / 4 cards mastered
+</p>
+
+<div class="progress-bar">
+
+<div id="flashcardProgressFill" class="progress-fill"></div>
+
+</div>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>🧬 S111 - Unit 00</h2>
+
+<p>
+Try to answer each question before clicking the card.
+</p>
+
+
+
+<div class="flashcard" data-card="science">
+
+<h3>❓ What is science?</h3>
+
+<div class="answer">
+
+<p>
+Science is a systematic way of investigating and understanding the natural world using evidence, observation and testing.
+</p>
+
+<br>
+
+<button onclick="masterCard(event, 'science')">
+✅ I Know This
+</button>
+
+<button onclick="reviewCard(event, 'science')">
+🔁 Review Again
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="flashcard" data-card="evidence">
+
+<h3>❓ Why is evidence important in science?</h3>
+
+<div class="answer">
+
+<p>
+Evidence allows ideas and explanations to be tested and evaluated rather than relying only on opinion or assumption.
+</p>
+
+<br>
+
+<button onclick="masterCard(event, 'evidence')">
+✅ I Know This
+</button>
+
+<button onclick="reviewCard(event, 'evidence')">
+🔁 Review Again
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="flashcard" data-card="notes">
+
+<h3>❓ Why are active notes useful?</h3>
+
+<div class="answer">
+
+<p>
+Active notes help you process information in your own words, identify important ideas and make later revision easier.
+</p>
+
+<br>
+
+<button onclick="masterCard(event, 'notes')">
+✅ I Know This
+</button>
+
+<button onclick="reviewCard(event, 'notes')">
+🔁 Review Again
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="flashcard" data-card="recall">
+
+<h3>❓ What is active recall?</h3>
+
+<div class="answer">
+
+<p>
+Active recall means trying to retrieve information from memory before checking the answer.
+</p>
+
+<br>
+
+<button onclick="masterCard(event, 'recall')">
+✅ I Know This
+</button>
+
+<button onclick="reviewCard(event, 'recall')">
+🔁 Review Again
+</button>
+
+</div>
+
+</div>
+
+
+</section>
+<section class="card">
+
+<h2>🔬 S111 – Unit 01</h2>
+
+<h3>Science and Observation</h3>
+
+<div class="flashcard">
+
+<h3>👀 Observation vs Interpretation</h3>
+
+<p>
+<strong>Question:</strong>
+What is the difference between an observation and an interpretation?
+</p>
+
+<details>
+
+<summary>✨ Reveal Answer</summary>
+
+<p>
+<strong>Observation:</strong> something you directly notice, detect or measure.
+</p>
+
+<p>
+<strong>Interpretation:</strong> an explanation of what you think the observation means.
+</p>
+
+</details>
+
+</div>
+<div class="flashcard">
+
+<h3>🔢 Qualitative vs Quantitative</h3>
+
+<p>
+<strong>Question:</strong>
+What is the difference between qualitative and quantitative observations?
+</p>
+
+<details>
+
+<summary>✨ Reveal Answer</summary>
+
+<p>
+<strong>Qualitative:</strong> describes qualities or characteristics.
+</p>
+
+<p>
+<strong>Quantitative:</strong> uses numbers or measurements.
+</p>
+
+</details>
+
+</div>
+<div class="flashcard">
+
+<h3>🔎 Careful Scientific Observations</h3>
+
+<p>
+<strong>Question:</strong>
+What makes a good scientific observation?
+</p>
+
+<details>
+
+<summary>✨ Reveal Answer</summary>
+
+<p>
+A good scientific observation is clear, specific and accurately recorded.
+</p>
+
+<p>
+Where possible, scientists use measurements and precise details rather than vague descriptions.
+</p>
+
+</details>
+
+</div>
+</section>
+
+
+<section class="card">
+
+<h2>🧪 Nova's Tip</h2>
+
+<p id="flashcardNova">
+
+Don't worry if you cannot remember everything yet. Cards marked for review are the ones helping your brain learn.
+
+</p>
+
+</section>
+
+
+</main>
+
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+const flashcards = document.querySelectorAll(".flashcard");
+
+let masteredCards =
+JSON.parse(localStorage.getItem("masteredFlashcards")) || [];
+
+
+flashcards.forEach(function(card) {
+
+    card.addEventListener("click", function() {
+
+        card.classList.toggle("show");
+
+    });
+
+});
+
+
+function masterCard(event, cardId) {
+
+    event.stopPropagation();
+
+    if (!masteredCards.includes(cardId)) {
+
+        masteredCards.push(cardId);
+
+        localStorage.setItem(
+            "masteredFlashcards",
+            JSON.stringify(masteredCards)
+        );
+
+        if (typeof addXP === "function") {
+            addXP(5);
+        }
+
+    }
+
+    updateFlashcardProgress();
+
+}
+
+
+function reviewCard(event, cardId) {
+
+    event.stopPropagation();
+
+    masteredCards =
+    masteredCards.filter(function(id) {
+
+        return id !== cardId;
+
+    });
+
+    localStorage.setItem(
+        "masteredFlashcards",
+        JSON.stringify(masteredCards)
+    );
+
+    updateFlashcardProgress();
+
+}
+
+
+function updateFlashcardProgress() {
+
+    const total = 4;
+
+    const mastered = masteredCards.length;
+
+    const percentage =
+    (mastered / total) * 100;
+
+
+    document.getElementById(
+        "flashcardProgress"
+    ).textContent =
+    mastered + " / " + total + " cards mastered";
+
+
+    document.getElementById(
+        "flashcardProgressFill"
+    ).style.width =
+    percentage + "%";
+
+
+    const nova =
+    document.getElementById("flashcardNova");
+
+
+    if (mastered === 4) {
+
+        nova.textContent =
+        "🎉 Brilliant! You've mastered all four Unit 00 cards.";
+
+    }
+
+    else if (mastered >= 2) {
+
+        nova.textContent =
+        "🌟 Nice progress! Keep recalling the remaining cards.";
+
+    }
+
+    else {
+
+        nova.textContent =
+        "🧪 Try answering before revealing each card. Getting something wrong is part of learning.";
+
+    }
+
+}
+
+
+updateFlashcardProgress();
+
+</script>
+
+
+</body>
+
+</html>

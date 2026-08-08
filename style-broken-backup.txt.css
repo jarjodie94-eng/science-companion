@@ -1,0 +1,347 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #a5f3fc, #ddd6fe, #fce7f3);
+    background-attachment: fixed;
+    color: #333;
+}
+
+
+/* Header */
+
+.hero {
+    background: linear-gradient(135deg, #2563eb, #9333ea);
+    color: white;
+    text-align: center;
+    padding: 35px;
+    border-radius: 0 0 35px 35px;
+}
+
+
+/* Navigation */
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+
+.navbar a {
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(10px);
+    text-decoration: none;
+    color: #333;
+    padding: 12px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+
+/* Main */
+
+.dashboard {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+
+/* Glass cards */
+
+.card {
+
+    background: rgba(255,255,255,0.75);
+
+    backdrop-filter: blur(18px);
+
+    padding: 25px;
+
+    margin-bottom: 25px;
+
+    border-radius: 30px;
+
+    box-shadow: 
+    0 15px 35px rgba(124,58,237,0.15);
+
+    border: 2px solid rgba(255,255,255,0.6);
+
+}
+
+
+/* Tiles */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:20px;
+}
+
+
+.tile {
+
+    padding: 30px;
+
+    border-radius: 30px;
+
+    text-decoration: none;
+
+    color: #222;
+
+    font-weight: bold;
+
+    min-height: 120px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    box-shadow:
+    0 12px 25px rgba(0,0,0,0.18),
+    inset 0 3px 10px rgba(255,255,255,0.5);
+
+    border: 3px solid rgba(255,255,255,0.8);
+
+    transition: 
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+}
+
+
+.tile:hover {
+
+    transform:
+    translateY(-12px)
+    scale(1.06);
+
+    box-shadow:
+
+    0 20px 40px rgba(0,0,0,0.25),
+    inset 0 5px 15px rgba(255,255,255,0.6);
+
+}
+
+
+.tile:hover {
+    transform:translateY(-8px) scale(1.03);
+}
+
+
+/* Tile colours */
+
+.unit-tile {
+    background:#bfdbfe;
+}
+
+.s111-tile {
+    background:#bbf7d0;
+}
+
+.s112-tile {
+    background:#ddd6fe;
+}
+
+.quiz-tile {
+    background:#fde68a;
+}
+
+.flashcards-tile {
+    background:#c084fc;
+    color:white;
+}
+
+.achievement-tile {
+    background:#fcd34d;
+}
+
+.planner-tile {
+    background:#f9a8d4;
+}
+
+
+/* Buttons */
+
+button {
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:14px 25px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.2s;
+}
+
+
+button:hover {
+    transform:scale(1.05);
+}
+
+
+/* Flashcards */
+
+.flashcard {
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(10px);
+    padding:20px;
+    margin:15px 0;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+
+.flashcard:hover {
+    transform:scale(1.02);
+}
+
+
+.flashcard .answer {
+    display:none;
+}
+
+
+.flashcard.show .answer {
+    display:block;
+}
+
+
+/* Progress */
+
+.progress-bar {
+    height:20px;
+    background:#ddd;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+
+.progress-fill {
+    height:100%;
+    width:0%;
+    background:#22c55e;
+}
+
+
+/* Mobile */
+
+@media(max-width:700px){
+
+.grid {
+    grid-template-columns:1fr;
+}
+
+}.tile h3 {
+
+    font-size: 24px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.tile p {
+
+    font-size: 16px;
+
+}/* Nova welcome card */
+
+.nova-card {
+
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.85),
+        rgba(224,242,254,0.75)
+    );
+
+    border: 3px solid rgba(255,255,255,0.8);
+
+}
+
+
+.nova-card h2 {
+
+    font-size: 30px;
+
+    color: #7c3aed;
+
+/* Nova glass welcome box */
+
+/* Nova glass welcome box */
+
+.nova-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    background: rgba(255,255,255,0.35);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    padding: 30px;
+
+    border-radius: 35px;
+
+    margin: 25px auto;
+
+    max-width: 900px;
+
+    border: 1px solid rgba(255,255,255,0.7);
+
+    box-shadow: 0 20px 40px rgba(124,58,237,0.18);
+
+}
+
+
+.nova-avatar {
+
+    font-size: 60px;
+
+    background: rgba(255,255,255,0.45);
+
+    width: 100px;
+
+    height: 100px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-shadow:
+    inset 0 5px 15px rgba(255,255,255,0.8),
+    0 10px 25px rgba(0,0,0,0.1);
+
+}
+
+
+.nova-message h3 {
+
+    font-size: 32px;
+
+    margin: 0 0 10px;
+
+    color: #7c3aed;
+
+}
+
+
+.nova-message p {
+
+    font-size: 18px;
+
+    line-height: 1.5;
+    

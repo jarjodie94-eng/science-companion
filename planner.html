@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📅 Study Planner - Science Companion</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+<header class="hero">
+
+<h1>📅 Study Planner</h1>
+
+<p>Plan small sessions. Make steady progress.</p>
+
+</header>
+
+
+<nav class="navbar">
+
+<a href="index.html">🏠 Home</a>
+
+<a href="units.html">📚 Modules</a>
+
+<a href="planner.html">📅 Planner</a>
+
+<a href="notes.html">📝 Notes</a>
+
+<a href="flashcards.html">🧠 Flashcards</a>
+
+<a href="quiz.html">❓ Quiz</a>
+
+<a href="achievements.html">🏆 Achievements</a>
+
+</nav>
+
+
+<main class="dashboard">
+
+
+<section class="card">
+
+<h2>➕ Plan a Study Session</h2>
+
+
+<label for="plannerModule">
+<strong>📚 Module</strong>
+</label>
+
+<br><br>
+
+<select id="plannerModule">
+
+<option value="🧬 S111">🧬 S111 - Questions in Science</option>
+
+<option value="🔬 S112">🔬 S112 - Science: Concepts and Practice</option>
+
+</select>
+
+
+<br><br>
+
+
+<label for="plannerGoal">
+<strong>🎯 What will you work on?</strong>
+</label>
+
+<br><br>
+
+<input
+type="text"
+id="plannerGoal"
+placeholder="Example: Review Unit 00 flashcards">
+
+
+<br><br>
+
+
+<label for="plannerDate">
+<strong>📅 Date</strong>
+</label>
+
+<br><br>
+
+<input type="date" id="plannerDate">
+
+
+<br><br>
+
+
+<label for="plannerTime">
+<strong>⏰ Time</strong>
+</label>
+
+<br><br>
+
+<input type="time" id="plannerTime">
+
+
+<br><br>
+
+
+<button id="saveStudySession">
+
+💾 Save Study Session
+
+</button>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>📋 Upcoming Study Sessions</h2>
+
+<div id="studySessions">
+
+<p>No study sessions planned yet.</p>
+
+</div>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>🔥 Study Progress</h2>
+
+<p id="completedSessionCount">
+
+Completed study sessions: 0
+
+</p>
+
+<p id="studyStreak">
+
+🔥 Study streak: 0 days
+
+</p>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>🧪 Nova's Planner Tip</h2>
+
+<p>
+
+Choose one clear goal for each session.  
+“Review four flashcards” is much easier to start than “study science”.
+
+</p>
+
+</section>
+
+
+</main>
+
+
+<script src="script.js"></script>
+
+<script src="js/planner.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Unit 01 - Science and Observation</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+<header class="hero">
+
+<h1>🔬 Unit 01</h1>
+
+<p>Science and Observation</p>
+
+</header>
+
+
+<nav class="navbar">
+
+<a href="index.html">🏠 Home</a>
+
+<a href="units.html">📚 Modules</a>
+
+<a href="planner.html">📅 Planner</a>
+
+<a href="notes.html">📝 Notes</a>
+
+<a href="flashcards.html">🧠 Flashcards</a>
+
+<a href="quiz.html">❓ Quiz</a>
+
+<a href="focus.html">⏱️ Focus</a>
+
+<a href="achievements.html">🏆 Achievements</a>
+
+</nav>
+
+
+<main class="dashboard">
+
+
+<section class="card">
+
+<h2>🧪 Nova</h2>
+
+<p>
+Welcome to Unit 01.
+</p>
+
+<p>
+This page is ready for us to build your next S111 study section.
+</p>
+
+</section>
+
+
+<section class="card">
+
+<h2>🎯 Unit Goals</h2>
+
+<ul>
+
+<li>👀 Understand the difference between observing and interpreting.</li>
+
+<li>📏 Recognise why scientists make careful and accurate observations.</li>
+
+<li>🔢 Understand the difference between qualitative and quantitative observations.</li>
+
+<li>🧠 Practise recording scientific observations clearly.</li>
+
+</ul>
+
+</section>
+
+
+<section class="card">
+
+<h2>📖 Lesson</h2>
+
+<p>
+Your Unit 01 lesson content will go here.
+</p><section class="card">
+
+<h2>📖 Lesson 1 — Observation or Interpretation?</h2>
+
+<p>
+Scientists often begin by observing what they can directly see, hear, measure or detect.
+</p>
+
+<p>
+An <strong>observation</strong> describes what is noticed.
+An <strong>interpretation</strong> explains what you think that observation means.
+</p>
+
+<br>
+
+<h3>🧠 Try this</h3>
+
+<p>
+You see water droplets on the outside of a cold glass.
+</p>
+
+<button type="button" onclick="checkObservation('observation')">
+👀 Observation
+</button>
+
+<button type="button" onclick="checkObservation('interpretation')">
+💭 Interpretation
+</button>
+
+<p id="observationResult"></p>
+
+</section>
+
+</section>
+<section class="card">
+
+<h2>📏 Lesson 2 — Qualitative or Quantitative?</h2>
+
+<p>
+Scientists can record observations in different ways.
+</p>
+
+<p>
+<strong>Qualitative</strong> observations describe qualities or characteristics.
+</p>
+
+<p>
+<strong>Quantitative</strong> observations use numbers or measurements.
+</p>
+
+<br>
+
+<h3>🧠 Try this</h3>
+
+<p>
+“The liquid is 24°C.”
+</p>
+
+<button type="button" onclick="checkObservationType('qualitative')">
+📝 Qualitative
+</button>
+
+<button type="button" onclick="checkObservationType('quantitative')">
+🔢 Quantitative
+</button>
+
+<p id="observationTypeResult"></p>
+
+</section>
+<section class="card">
+
+<h2>🔎 Lesson 3 — Be a Scientific Observer</h2>
+
+<p>
+Good scientific observations should be clear and specific.
+</p>
+
+<h3>🧪 Which is the better scientific observation?</h3>
+
+<p>
+Imagine you are observing a plant.
+</p>
+
+<button type="button" onclick="checkCarefulObservation('vague')">
+🌱 The plant looks healthy.
+</button>
+
+<button type="button" onclick="checkCarefulObservation('specific')">
+📏 The plant is 18 cm tall and has 6 green leaves.
+</button>
+
+<p id="carefulObservationResult"></p>
+
+</section>
+<section class="card">
+
+<h2>📝 Notes</h2>
+
+<textarea
+id="unit01Notes"
+placeholder="Write your Unit 01 notes here..."
+rows="10"
+style="width:100%;">
+</textarea>
+
+</section>
+
+
+<section class="card">
+
+<h2>🧠 Revision</h2>
+
+<button onclick="location.href='flashcards.html'">
+🧠 Flashcards
+</button>
+
+<button onclick="location.href='quiz.html'">
+❓ Quiz
+</button>
+
+</section>
+
+
+</main>
+
+
+<script src="script.js"></script>
+<script src="js/notes.js"></script>
+<script>
+
+function checkObservation(answer) {
+
+    const result =
+    document.getElementById("observationResult");
+
+
+    if (answer === "observation") {
+
+        result.textContent =
+        "✅ Correct! 'There are water droplets on the glass' is an observation.";
+
+    }
+
+    else {
+
+        result.textContent =
+        "💡 Not quite. An interpretation would explain why the droplets are there.";
+
+    }
+
+}
+function checkObservationType(answer) {
+
+    const result =
+    document.getElementById("observationTypeResult");
+
+    if (answer === "quantitative") {
+
+        result.textContent =
+        "✅ Correct! 24°C is a numerical measurement, so it is quantitative.";
+
+    }
+
+    else {
+
+        result.textContent =
+        "💡 Not quite. Because the observation uses a number and a measurement, it is quantitative.";
+
+    }
+
+}
+function checkCarefulObservation(answer) {
+
+    const result =
+    document.getElementById("carefulObservationResult");
+
+    if (answer === "specific") {
+
+        result.textContent =
+        "✅ Correct! Scientific observations are stronger when they are clear, specific and measurable.";
+
+    }
+
+    else {
+
+        result.textContent =
+        "💡 Not quite. 'Looks healthy' is vague. A better observation gives specific details you can record.";
+
+    }
+
+}
+</script>
+</body>
+
+</html>

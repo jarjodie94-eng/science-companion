@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>⏱️ Focus Timer - Science Companion</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+<header class="hero">
+
+<h1>⏱️ Focus Timer</h1>
+
+<p>One small session. One clear goal.</p>
+
+</header>
+
+
+<nav class="navbar">
+
+<a href="index.html">🏠 Home</a>
+
+<a href="units.html">📚 Modules</a>
+
+<a href="planner.html">📅 Planner</a>
+
+<a href="notes.html">📝 Notes</a>
+
+<a href="flashcards.html">🧠 Flashcards</a>
+
+<a href="quiz.html">❓ Quiz</a>
+
+<a href="focus.html">⏱️ Focus</a>
+
+<a href="achievements.html">🏆 Achievements</a>
+
+</nav>
+
+
+<main class="dashboard">
+
+
+<section class="card">
+
+<h2>🎯 What are you working on?</h2>
+
+<input
+type="text"
+id="focusGoal"
+placeholder="Example: Review Unit 00 notes"
+style="width:100%; box-sizing:border-box;"
+>
+
+</section>
+
+
+<section class="card">
+
+<h2>⏱️ Choose Your Focus Time</h2>
+
+<p>Pick a session that feels manageable today.</p>
+
+<br>
+
+<button type="button" onclick="chooseFocusTime(1)">
+🧪 1 min Test
+</button>
+
+<button type="button" onclick="chooseFocusTime(10)">
+🌱 10 min
+</button>
+
+<button type="button" onclick="chooseFocusTime(20)">
+⭐ 20 min
+</button>
+
+<button type="button" onclick="chooseFocusTime(25)">
+🔥 25 min
+</button>
+
+<button type="button" onclick="chooseFocusTime(45)">
+🚀 45 min
+</button>
+
+</section>
+
+
+<section class="card">
+
+<h2>🧠 Focus Session</h2>
+
+<p
+id="focusTimer"
+style="
+font-size:4rem;
+font-weight:800;
+text-align:center;
+margin:30px 0;
+"
+>
+20:00
+</p>
+
+
+<div style="text-align:center;">
+
+<button type="button" id="startFocusButton">
+▶ Start
+</button>
+
+<button type="button" id="pauseFocusButton">
+⏸ Pause
+</button>
+
+<button type="button" id="resetFocusButton">
+↻ Reset
+</button>
+
+</div>
+
+
+<p
+id="focusStatus"
+style="text-align:center; font-weight:bold;"
+>
+⭐ Ready when you are.
+</p>
+
+</section>
+
+
+<section class="card">
+
+<h2>🧪 Nova's Focus Tip</h2>
+
+<p id="focusNova">
+You don't need to finish everything. Pick one small goal and work on just that until the timer ends.
+</p>
+
+</section>
+
+
+<section class="card">
+
+<h2>🏆 Focus Stats</h2>
+
+<p id="focusSessionsCompleted">
+⏱️ Focus sessions completed: 0
+</p>
+
+<p id="focusMinutesCompleted">
+🧠 Focus minutes completed: 0
+</p>
+
+</section>
+
+
+</main>
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+let selectedFocusMinutes = 20;
+
+let focusSeconds = selectedFocusMinutes * 60;
+
+let focusTimerInterval = null;
+
+let focusRunning = false;
+
+
+const focusTimerDisplay =
+document.getElementById("focusTimer");
+
+const focusStatus =
+document.getElementById("focusStatus");
+
+const focusGoal =
+document.getElementById("focusGoal");
+
+const focusNova =
+document.getElementById("focusNova");
+
+
+function updateFocusDisplay() {
+
+    const minutes =
+    Math.floor(focusSeconds / 60);
+
+    const seconds =
+    focusSeconds % 60;
+
+    focusTimerDisplay.textContent =
+    String(minutes).padStart(2, "0") +
+    ":" +
+    String(seconds).padStart(2, "0");
+
+}
+
+
+function chooseFocusTime(minutes) {
+
+    clearInterval(focusTimerInterval);
+
+    focusRunning = false;
+
+    selectedFocusMinutes = minutes;
+
+    focusSeconds = minutes * 60;
+
+    updateFocusDisplay();
+
+    focusStatus.textContent =
+    "⭐ " + minutes + " minute session ready.";
+
+}
+
+
+document
+.getElementById("startFocusButton")
+.addEventListener("click", function() {
+
+    if (focusRunning) {
+        return;
+    }
+
+
+    if (focusGoal.value.trim() === "") {
+
+        focusStatus.textContent =
+        "🎯 Add a small study goal first.";
+
+        focusGoal.focus();
+
+        return;
+
+    }
+
+
+    focusRunning = true;
+
+
+    focusStatus.textContent =
+    "🧠 Focusing on: " +
+    focusGoal.value.trim();
+
+
+    focusNova.textContent =
+    "🚀 Timer started. Stay with your one chosen task — everything else can wait.";
+
+
+    focusTimerInterval =
+    setInterval(function() {
+
+        focusSeconds--;
+
+        updateFocusDisplay();
+
+
+        if (focusSeconds <= 0) {
+
+            completeFocusSession();
+
+        }
+
+    }, 1000);
+
+});
+
+
+document
+.getElementById("pauseFocusButton")
+.addEventListener("click", function() {
+
+    clearInterval(focusTimerInterval);
+
+    focusRunning = false;
+
+    focusStatus.textContent =
+    "⏸ Paused — your time is saved.";
+
+});
+
+
+document
+.getElementById("resetFocusButton")
+.addEventListener("click", function() {
+
+    clearInterval(focusTimerInterval);
+
+    focusRunning = false;
+
+    focusSeconds =
+    selectedFocusMinutes * 60;
+
+    updateFocusDisplay();
+
+    focusStatus.textContent =
+    "↻ Timer reset.";
+
+});
+
+
+function completeFocusSession() {
+
+    clearInterval(focusTimerInterval);
+
+    focusRunning = false;
+
+    focusSeconds = 0;
+
+    updateFocusDisplay();
+
+
+    let completedSessions =
+    Number(
+        localStorage.getItem(
+            "focusSessionsCompleted"
+        )
+    ) || 0;
+
+
+    let completedMinutes =
+    Number(
+        localStorage.getItem(
+            "focusMinutesCompleted"
+        )
+    ) || 0;
+
+
+    completedSessions++;
+
+    completedMinutes +=
+    selectedFocusMinutes;
+
+
+    localStorage.setItem(
+        "focusSessionsCompleted",
+        completedSessions
+    );
+
+
+    localStorage.setItem(
+        "focusMinutesCompleted",
+        completedMinutes
+    );
+
+
+    if (typeof addXP === "function") {
+
+        addXP(15);
+
+    }
+
+
+    focusStatus.textContent =
+    "🎉 Focus session complete! +15 XP";
+
+
+    focusNova.textContent =
+    "🌟 You did it! Take a proper break before deciding what comes next.";
+
+
+    document.body.classList.add(
+        "focus-complete"
+    );
+
+
+    setTimeout(function() {
+
+        document.body.classList.remove(
+            "focus-complete"
+        );
+
+    }, 1200);
+
+
+    updateFocusStats();
+
+}
+
+
+function updateFocusStats() {
+
+    const sessions =
+    Number(
+        localStorage.getItem(
+            "focusSessionsCompleted"
+        )
+    ) || 0;
+
+
+    const minutes =
+    Number(
+        localStorage.getItem(
+            "focusMinutesCompleted"
+        )
+    ) || 0;
+
+
+    document.getElementById(
+        "focusSessionsCompleted"
+    ).textContent =
+    "⏱️ Focus sessions completed: " +
+    sessions;
+
+
+    document.getElementById(
+        "focusMinutesCompleted"
+    ).textContent =
+    "🧠 Focus minutes completed: " +
+    minutes;
+
+}
+
+
+updateFocusDisplay();
+
+updateFocusStats();
+
+</script>
+
+
+</body>
+
+</html>

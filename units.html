@@ -2,62 +2,349 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Science Companion - Units</title>
 
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📚 My Modules - Science Companion</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-<h1>📚 Science Companion</h1>
 
-<h2>Your Open University Units</h2>
+<header class="hero">
 
-<div class="card">
+<h1>📚 My Modules</h1>
 
-<h2>🧬 S111 - Questions in Science</h2>
+<p>Your Open University science study hub</p>
 
-<ul>
+</header>
 
-<li>
-<a id="unit00" href="unit00.html">
-⬜ Unit 00 - Preparing for Study
+
+
+<nav class="navbar">
+
+<a href="index.html">🏠 Home</a>
+
+<a href="units.html">📚 Modules</a>
+
+<a href="planner.html">📅 Planner</a>
+
+<a href="notes.html">📝 Notes</a>
+
+<a href="flashcards.html">🧠 Flashcards</a>
+
+<a href="quiz.html">❓ Quiz</a>
+
+<a href="achievements.html">🏆 Achievements</a>
+
+</nav>
+
+
+
+<main class="dashboard">
+
+
+<!-- S111 -->
+
+<section class="card">
+
+<h2>🧬 S111 – Questions in Science</h2>
+
+<p>
+Your current S111 study area.
+</p>
+
+<br>
+
+<h3>⭐ Progress</h3>
+
+<div class="progress-bar">
+
+<div
+id="s111ProgressFill"
+class="progress-fill"
+style="width:0%;">
+</div>
+
+</div>
+
+<p id="s111ProgressText">
+Checking your progress...
+</p>
+
+<br>
+
+
+<h3>📖 Current Unit</h3>
+
+<a href="unit00.html" class="tile unit-tile">
+
+<h3>📘 Unit 00</h3>
+
+<p>Preparing for Study</p>
+
+<p id="unit00Status">
+Checking progress...
+</p>
+
 </a>
-</li>
+<a href="unit01.html" class="tile s111-tile">
 
-<li>⬜ Unit 01</li>
+<h3>🔬 Unit 01</h3>
 
-<li>⬜ Unit 02</li>
+<p>Science and Observation</p>
 
-<li>⬜ Unit 03</li>
+<p>
+▶ Start Unit
+</p>
 
-</ul>
+</a>
+
+<br>
+
+
+<h3>🧰 S111 Study Tools</h3>
+
+<div class="grid">
+
+
+<a href="notes.html" class="tile">
+
+<h3>📝 Notes</h3>
+
+<p>Write and review your S111 notes</p>
+
+</a>
+
+
+<a href="flashcards.html" class="tile flashcards-tile">
+
+<h3>🧠 Flashcards</h3>
+
+<p>Practise key ideas</p>
+
+</a>
+
+
+<a href="quiz.html" class="tile quiz-tile">
+
+<h3>❓ Quiz</h3>
+
+<p>Test what you remember</p>
+
+</a>
+
+
+<a href="planner.html" class="tile planner-tile">
+
+<h3>📅 Plan Study</h3>
+
+<p>Schedule your next session</p>
+
+</a>
+
 
 </div>
 
-<div class="card">
+</section>
 
-<h2>🔬 S112 - Science: Concepts and Practice</h2>
 
-<ul>
 
-<li>⬜ Block 1</li>
+<!-- S112 -->
 
-<li>⬜ Block 2</li>
+<section class="card">
 
-<li>⬜ Block 3</li>
+<h2>🔬 S112 – Science: Concepts and Practice</h2>
 
-</ul>
+<p>
+Your S112 study area is ready for us to build as your preparation progresses.
+</p>
+
+<br>
+
+<h3>⭐ Progress</h3>
+
+<div class="progress-bar">
+
+<div
+class="progress-fill"
+style="width:0%;">
+</div>
 
 </div>
 
-<button onclick="window.location='index.html'">
-🏠 Back to Dashboard
+<p>
+0% started
+</p>
+
+<br>
+
+<button onclick="location.href='notes.html'">
+
+📝 Open S112 Notes
+
 </button>
 
+</section>
+
+
+
+<!-- Nova -->
+
+<section class="card">
+
+<h2>🧪 Nova's Study Tip</h2>
+
+<p id="moduleNovaMessage">
+
+Start with one small task. You do not need to study everything at once.
+
+</p>
+
+</section>
+
+
+
+<!-- Overall Stats -->
+
+<section class="card">
+
+<h2>📊 Your Study Stats</h2>
+
+<p id="moduleXP">
+⭐ XP: loading...
+</p>
+
+<p id="moduleAchievements">
+🏆 Achievements: loading...
+</p>
+
+<p id="moduleCompleted">
+📚 Units completed: loading...
+</p>
+
+</section>
+
+
+</main>
+
+
+
 <script src="script.js"></script>
+
+
+<script>
+
+/* ======================================
+   MODULE PAGE PROGRESS
+====================================== */
+
+const unit00Complete =
+localStorage.getItem("unit00Complete") === "true";
+
+
+const unitStatus =
+document.getElementById("unit00Status");
+
+
+const progressText =
+document.getElementById("s111ProgressText");
+
+
+const progressFill =
+document.getElementById("s111ProgressFill");
+
+
+if (unit00Complete) {
+
+    unitStatus.textContent =
+    "✅ Completed";
+
+    progressText.textContent =
+    "✅ Unit 00 completed";
+
+    progressFill.style.width =
+    "100%";
+
+}
+
+else {
+
+    unitStatus.textContent =
+    "▶ Continue studying";
+
+    progressText.textContent =
+    "📖 Unit 00 in progress";
+
+    progressFill.style.width =
+    "35%";
+
+}
+
+
+
+/* XP */
+
+const savedXP =
+Number(localStorage.getItem("xp")) || 0;
+
+document.getElementById("moduleXP").textContent =
+"⭐ XP earned: " + savedXP;
+
+
+
+/* Achievements */
+
+const savedAchievements =
+JSON.parse(
+localStorage.getItem("achievements")
+) || [];
+
+document.getElementById(
+"moduleAchievements"
+).textContent =
+"🏆 Achievements unlocked: " +
+savedAchievements.length;
+
+
+
+/* Units */
+
+document.getElementById(
+"moduleCompleted"
+).textContent =
+"📚 Units completed: " +
+(unit00Complete ? 1 : 0);
+
+
+
+/* Nova */
+
+const novaMessage =
+document.getElementById("moduleNovaMessage");
+
+
+if (unit00Complete) {
+
+    novaMessage.textContent =
+    "🌟 Unit 00 is complete! Use your notes, flashcards and quiz to keep the ideas fresh.";
+
+}
+
+else {
+
+    novaMessage.textContent =
+    "🧪 Your next step is Unit 00. A short study session is enough — consistency matters more than doing everything at once.";
+
+}
+
+</script>
+
 
 </body>
 

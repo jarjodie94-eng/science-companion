@@ -1,69 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<title>Unit 00</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Unit 00 - Preparing for Study</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-<div class="card">
 
-<h1>📚 S111 - Unit 00</h1>
-<h2>Preparing for Study</h2>
+<header class="hero">
+
+<h1>📘 Unit 00</h1>
+
+<p>Preparing for Study</p>
+
+</header>
+
+
+<nav class="navbar">
+
+<a href="index.html">🏠 Home</a>
+
+<a href="units.html">📚 Modules</a>
+
+<a href="planner.html">📅 Planner</a>
+
+<a href="notes.html">📝 Notes</a>
+
+<a href="flashcards.html">🧠 Flashcards</a>
+
+<a href="quiz.html">❓ Quiz</a>
+
+<a href="achievements.html">🏆 Achievements</a>
+
+</nav>
+
+
+<main class="dashboard">
+
+
+<section class="card">
+
+<h2>🧪 Nova</h2>
 
 <p>
-Welcome to your first Open University science unit.
-This lesson will help you prepare for successful study.
+Welcome to Unit 00! This unit is about getting yourself ready to study successfully.
 </p>
 
-<div class="card">
-<h3>📖 What you will learn</h3>
+<p>
+You do not need to complete everything at once. Work through one small section at a time.
+</p>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>🎯 Learning Goals</h2>
+
+<p>By the end of this preparation unit, aim to:</p>
 
 <ul>
-<li>How the Open University works</li>
-<li>How to plan study time</li>
-<li>How to use your module website</li>
-<li>How to make useful study notes</li>
+
+<li>🗂️ Understand how your study materials are organised</li>
+
+<li>⏰ Create a realistic study routine</li>
+
+<li>📝 Practise making useful notes</li>
+
+<li>🧠 Find study methods that help you remember information</li>
+
+<li>🌟 Feel more prepared for university-level study</li>
+
 </ul>
 
-</div>
+</section>
 
-<div class="card">
 
-<h3>✅ Study Checklist</h3>
 
-<label><input type="checkbox"> Read the introduction</label><br><br>
+<section class="card">
 
-<label><input type="checkbox"> Watch the welcome video</label><br><br>
-
-<label><input type="checkbox"> Complete Activity 1</label><br><br>
-
-<label><input type="checkbox"> Write your first study notes</label>
-
-</div>
-
-<div class="card">
-
-<h3>💡 Study Tip</h3>
+<h2>📖 Study Tip 1 — Small Sessions Count</h2>
 
 <p>
-Study in short sessions of 25–30 minutes and take a
-5-minute break before continuing.
+Studying does not have to mean sitting at a desk for several hours.
 </p>
 
+<p>
+A focused 20–30 minute session can be useful, especially when followed by a short break.
+</p>
+
+<p>
+The important thing is returning regularly rather than trying to do everything in one session.
+</p>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>📝 Study Tip 2 — Active Notes</h2>
+
+<p>
+Try not to copy everything word-for-word.
+</p>
+
+<p>
+Instead, ask yourself:
+</p>
+
+<ul>
+
+<li>💡 What is the main idea?</li>
+
+<li>❓ What do I not understand yet?</li>
+
+<li>🔑 Which words or ideas are important?</li>
+
+<li>🧪 Can I explain this in my own words?</li>
+
+</ul>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>🧠 Study Tip 3 — Active Recall</h2>
+
+<p>
+One useful way to revise is to try to remember something before looking at the answer.
+</p>
+
+<p>
+That is why your Science Companion includes flashcards and quizzes.
+</p>
+
+<button onclick="location.href='flashcards.html'">
+
+🧠 Practise Flashcards
+
+</button>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>✅ Unit 00 Checklist</h2>
+
+<p>
+<button id="task1">
+☐ Set up your study space (+10 XP)
+</button>
+</p>
+
+<p>
+<button id="task2">
+☐ Understand your module structure (+10 XP)
+</button>
+</p>
+
+<p>
+<button id="task3">
+☐ Plan your study time (+10 XP)
+</button>
+</p>
+
+<p>
+<button id="task4">
+☐ Practise making science notes (+10 XP)
+</button>
+</p>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>⭐ Unit Progress</h2>
+
+<p id="unitProgressText">
+0 / 4 tasks completed
+</p>
+
+<div class="progress-bar">
+
+<div id="unitProgressFill" class="progress-fill"></div>
+
 </div>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>📝 Quick Notes</h2>
+
+<p>
+Use this box for thoughts you want to keep while working through Unit 00.
+</p>
+
+<textarea
+id="unitNotes"
+placeholder="Write your Unit 00 notes here..."
+rows="10"
+style="width:100%;">
+</textarea>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>🧠 Revision</h2>
+
+<p>
+When you feel ready, practise what you have learned.
+</p>
+
+<br>
+
+<button onclick="location.href='flashcards.html'">
+
+🧠 Open Flashcards
+
+</button>
+
+&nbsp;
 
 <button onclick="location.href='quiz.html'">
-📝 Take Quiz
+
+❓ Take Unit 00 Quiz
+
 </button>
 
-<button onclick="location.href='units.html'">
-⬅ Back to Units
+</section>
+
+
+
+<section class="card">
+
+<h2>🏁 Finished for Today?</h2>
+
+<p>
+Even one completed task counts as progress.
+</p>
+
+<button onclick="location.href='planner.html'">
+
+📅 Plan My Next Study Session
+
 </button>
 
-</div>
+</section>
+
+
+</main>
+
+
+<script src="script.js"></script>
+<script src="js/unit00.js"></script>
+
+<script>
+
+if (typeof checkUnitCompletion === "function") {
+
+    checkUnitCompletion();
+
+}
+
+</script>
+
 
 </body>
+
 </html>

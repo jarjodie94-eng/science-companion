@@ -1,66 +1,811 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Science Companion</title>
-  <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Science Companion</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
+
 <body>
 
-  <header class="hero">
-    <h1>🧪 Science Companion</h1>
-    <p>Your Open University Study Dashboard</p>
-  </header>
 
-  <main class="dashboard">
+<div id="achievementPopup"></div>
 
-    <section class="card">
-      <h2>👋 Welcome back, Jodie!</h2>
-      <p>Ready for another study session?</p>
-    </section>
 
-    <section class="card progress">
-      <h2>⭐ Progress</h2>
-      <p>Level 1</p>
-      <div class="progress-bar">
-        <div class="progress-fill"></div>
-      </div>
-      <p>XP: 0 / 100</p>
-    </section>
+<header class="hero">
 
-    <section class="grid">
+<h1>🧪 Science Companion</h1>
 
-      <a href="unit00.html" class="tile">
-        <h3>📖 Unit 00</h3>
-        <p>Welcome & Study Skills</p>
-      </a>
+<p>Your Open University Study Dashboard</p>
 
-      <a href="units.html" class="tile">
-        <h3>🧬 S111</h3>
-        <p>Questions in Science</p>
-      </a>
 
-      <a href="units.html" class="tile">
-        <h3>🔬 S112</h3>
-        <p>Science: Concepts & Practice</p>
-      </a>
+<div class="nova-box">
 
-      <a href="quiz.html" class="tile">
-        <h3>❓ Quiz</h3>
-        <p>Test your knowledge</p>
-      </a>
+<div class="nova-avatar">
+🧪
+</div>
 
-    </section>
+<div class="nova-message">
 
-    <section class="card">
-      <h2>🎯 Today's Mission</h2>
-      <p>Complete Unit 00 and earn your first 100 XP!</p>
-    </section>
+<h3>Hello, I'm Nova!</h3>
 
-  </main>
+<p id="novaText">
+Ready for today's science adventure?
+</p>
 
-  <script src="script.js"></script>
+</div>
+
+</div>
+
+</header>
+
+
+
+<nav class="navbar">
+
+<a href="index.html">🏠 Home</a>
+
+<a href="units.html">📚 Modules</a>
+
+<a href="planner.html">📅 Planner</a>
+
+<a href="notes.html">📝 Notes</a>
+
+<a href="flashcards.html">🧠 Flashcards</a>
+
+<a href="quiz.html">❓ Quiz</a>
+
+<a href="focus.html">⏱️ Focus</a>
+
+<a href="achievements.html">🏆 Achievements</a>
+
+</nav>
+
+
+
+<main class="dashboard">
+
+
+<section class="card progress">
+
+<h2>⭐ Progress</h2>
+
+<p id="levelText">
+Level 1
+</p>
+
+<div class="progress-bar">
+
+<div id="xpBar" class="progress-fill"></div>
+
+</div>
+
+<p id="xpText">
+XP: 0 / 100
+</p>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>📚 Current Study</h2>
+
+<p>
+<strong>🧬 S111 - Questions in Science</strong>
+</p>
+
+<p>
+📖 Unit 00 - Preparing for Study
+</p>
+
+<div class="progress-bar">
+
+<div id="unitProgressFill" class="progress-fill"></div>
+
+</div>
+
+<p id="unitProgressText">
+0 / 4 tasks completed
+</p>
+
+<br>
+
+<button onclick="location.href='unit00.html'">
+
+🚀 Continue Studying
+
+</button>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>📅 Next Study Session</h2>
+
+<div id="nextStudySession">
+
+<p>Checking your planner...</p>
+
+</div>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>🔥 Study Streak</h2>
+
+<p id="dashboardStreak">
+
+Calculating your streak...
+
+</p>
+
+</section>
+
+
+<section class="card">
+
+<h2>🌟 Today</h2>
+
+<p id="todaySummary">
+Loading today's progress...
+</p>
+<br>
+
+<button id="quickStartButton">
+🚀 Quick Start
+</button>
+</section>
+<section class="card">
+
+<h2>📈 Study Statistics</h2>
+
+<p id="statsAchievements">
+🏆 Achievements: 0
+</p>
+
+<p id="statsUnits">
+📖 Units Completed: 0
+</p>
+
+<p id="statsQuizzes">
+❓ Quizzes Passed: 0
+</p>
+
+<p id="dashboardFlashcards">
+🧠 Flashcards Mastered: 0
+</p>
+
+<p id="dashboardFocus">
+⏱️ Focus Sessions: 0
+</p>
+
+<p id="dashboardFocusMinutes">
+🧠 Focus Minutes: 0
+</p>
+
+</section>
+
+
+
+<section class="card">
+
+<h2>🎯 Next Goal</h2>
+
+<p id="nextGoal">
+
+Complete Unit 00.
+
+</p>
+
+</section>
+
+
+
+<section class="grid">
+
+
+<a href="unit00.html" class="tile unit-tile">
+
+<h3>📖 Unit 00</h3>
+
+<p>Welcome & Study Skills</p>
+
+</a>
+
+
+<a href="units.html" class="tile s111-tile">
+
+<h3>🧬 S111</h3>
+
+<p>Questions in Science</p>
+
+</a>
+
+
+<a href="units.html" class="tile s112-tile">
+
+<h3>🔬 S112</h3>
+
+<p>Science: Concepts & Practice</p>
+
+</a>
+
+
+<a href="quiz.html" class="tile quiz-tile">
+
+<h3>❓ Quiz</h3>
+
+<p>Test your knowledge</p>
+
+</a>
+
+
+<a href="flashcards.html" class="tile flashcards-tile">
+
+<h3>🧠 Flashcards</h3>
+
+<p>Practise and remember key ideas</p>
+
+</a>
+
+
+<a href="achievements.html" class="tile achievement-tile">
+
+<h3>🏆 Achievements</h3>
+
+<p>View your milestones</p>
+
+</a>
+
+
+<a href="planner.html" class="tile planner-tile">
+
+<h3>📅 Planner</h3>
+
+<p>Plan your study sessions</p>
+
+</a>
+
+
+<a href="focus.html" class="tile focus-tile">
+
+<h3>⏱️ Focus Timer</h3>
+
+<p>Start a focused study session</p>
+
+</a>
+
+
+</section>
+
+
+
+<section class="card mission-card">
+
+<h2>🎯 Daily Mission</h2>
+
+<p id="dailyMission">
+
+Loading today's mission...
+
+</p>
+
+<br>
+
+<button id="missionButton">
+
+✅ Complete Mission (+25 XP)
+
+</button>
+
+<p id="missionReward"></p>
+
+</section>
+
+
+</main>
+
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+(() => {
+
+/* =====================================
+   DASHBOARD EXTRAS
+===================================== */
+
+/* ---------- XP Bar ---------- */
+
+const dashboardXP =
+Number(localStorage.getItem("xp")) || 0;
+
+const xpBar =
+document.getElementById("xpBar");
+
+if (xpBar) {
+
+    const xpInCurrentLevel =
+    dashboardXP % 100;
+
+    xpBar.style.width =
+    xpInCurrentLevel + "%";
+
+}
+/* ---------- Planner ---------- */
+
+const sessions =
+JSON.parse(
+    localStorage.getItem("studySessions")
+) || [];
+
+
+const upcoming =
+sessions
+.filter(session => !session.completed)
+.sort((a, b) => {
+
+    const first =
+    a.date + "T" + a.time;
+
+    const second =
+    b.date + "T" + b.time;
+
+    return first.localeCompare(second);
+
+});
+
+
+const studyBox =
+document.getElementById("nextStudySession");
+
+
+if (studyBox) {
+
+    if (upcoming.length === 0) {
+
+        studyBox.innerHTML = `
+
+        <p>🌱 No study sessions planned yet.</p>
+
+        <br>
+
+        <button onclick="location.href='planner.html'">
+        📅 Plan a Study Session
+        </button>
+
+        `;
+
+    }
+
+    else {
+
+        const next =
+        upcoming[0];
+
+
+        const date =
+        new Date(
+            next.date + "T00:00:00"
+        );
+
+
+        const readableDate =
+        date.toLocaleDateString(
+            "en-GB",
+            {
+                weekday: "long",
+                day: "numeric",
+                month: "long"
+            }
+        );
+
+
+        studyBox.innerHTML = `
+
+        <h3>${next.module}</h3>
+
+        <p>
+        🎯 ${next.goal || "Study session"}
+        </p>
+
+        <p>
+        📅 ${readableDate}
+        </p>
+
+        <p>
+        ⏰ ${next.time}
+        </p>
+
+        <br>
+
+        <button onclick="location.href='planner.html'">
+        🚀 Open Planner
+        </button>
+
+        `;
+
+    }
+
+}
+
+
+
+/* ---------- Flashcards ---------- */
+
+const mastered =
+JSON.parse(
+    localStorage.getItem(
+        "masteredFlashcards"
+    )
+) || [];
+
+
+const flashcardText =
+document.getElementById(
+    "dashboardFlashcards"
+);
+
+
+if (flashcardText) {
+
+    flashcardText.textContent =
+    "🧠 Flashcards Mastered: " +
+    mastered.length;
+
+}
+
+
+
+/* ---------- Focus Stats ---------- */
+
+const focusSessions =
+Number(
+    localStorage.getItem(
+        "focusSessionsCompleted"
+    )
+) || 0;
+
+
+const focusMinutes =
+Number(
+    localStorage.getItem(
+        "focusMinutesCompleted"
+    )
+) || 0;
+
+
+const focusSessionText =
+document.getElementById(
+    "dashboardFocus"
+);
+
+
+const focusMinuteText =
+document.getElementById(
+    "dashboardFocusMinutes"
+);
+
+
+if (focusSessionText) {
+
+    focusSessionText.textContent =
+    "⏱️ Focus Sessions: " +
+    focusSessions;
+
+}
+
+
+if (focusMinuteText) {
+
+    focusMinuteText.textContent =
+    "🧠 Focus Minutes: " +
+    focusMinutes;
+
+}
+
+
+
+/* ---------- Study Streak ---------- */
+
+function calculateHomeStreak() {
+
+    const completedDates =
+    sessions
+    .filter(session =>
+        session.completed &&
+        session.completedDate
+    )
+    .map(session =>
+        session.completedDate
+    );
+
+
+    const uniqueDates =
+    [...new Set(completedDates)]
+    .sort()
+    .reverse();
+
+
+    if (uniqueDates.length === 0) {
+
+        return 0;
+
+    }
+
+
+    const today =
+    new Date();
+
+    today.setHours(0, 0, 0, 0);
+
+
+    const newest =
+    new Date(
+        uniqueDates[0] +
+        "T00:00:00"
+    );
+
+
+    const daysSince =
+    Math.round(
+        (today - newest) /
+        86400000
+    );
+
+
+    if (daysSince > 1) {
+
+        return 0;
+
+    }
+
+
+    let streak = 1;
+
+
+    for (
+        let i = 1;
+        i < uniqueDates.length;
+        i++
+    ) {
+
+        const previous =
+        new Date(
+            uniqueDates[i - 1] +
+            "T00:00:00"
+        );
+
+
+        const current =
+        new Date(
+            uniqueDates[i] +
+            "T00:00:00"
+        );
+
+
+        const gap =
+        Math.round(
+            (previous - current) /
+            86400000
+        );
+
+
+        if (gap === 1) {
+
+            streak++;
+
+        }
+
+        else {
+
+            break;
+
+        }
+
+    }
+
+
+    return streak;
+
+}
+
+
+const streak =
+calculateHomeStreak();
+
+
+const streakText =
+document.getElementById(
+    "dashboardStreak"
+);
+
+
+if (streakText) {
+
+    if (streak === 0) {
+
+        streakText.textContent =
+        "🌱 Complete a study session to start your streak.";
+
+    }
+
+    else if (streak === 1) {
+
+        streakText.textContent =
+        "🔥 1 day streak! You're underway.";
+
+    }
+
+    else {
+
+        streakText.textContent =
+        "🔥 " +
+        streak +
+        " day streak! Keep it going!";
+
+    }
+
+}
+
+
+/* ---------- Today Summary ---------- */
+
+const todaySummary =
+document.getElementById("todaySummary");
+
+if (todaySummary) {
+
+    let message = "🌱 A fresh study day! ";
+
+    if (upcoming.length > 0) {
+
+        message +=
+        "📅 You have a study session planned. ";
+
+    }
+
+    if (streak > 0) {
+
+        message +=
+        "🔥 Your streak is " +
+        streak +
+        " day" +
+        (streak === 1 ? "" : "s") +
+        ". ";
+
+    }
+
+    if (focusSessions > 0) {
+
+        message +=
+        "⏱️ You've completed " +
+        focusSessions +
+        " focus session" +
+        (focusSessions === 1 ? "" : "s") +
+        ". ";
+
+    }
+
+    if (mastered.length > 0) {
+
+        message +=
+        "🧠 " +
+        mastered.length +
+        " flashcard" +
+        (mastered.length === 1 ? "" : "s") +
+        " mastered!";
+
+    }
+
+    todaySummary.textContent = message;
+
+}
+/* ---------- Quick Start ---------- */
+
+const quickStartButton =
+document.getElementById("quickStartButton");
+
+if (quickStartButton) {
+
+    quickStartButton.addEventListener(
+        "click",
+        function() {
+
+            const unit00Done =
+            localStorage.getItem("unit00Complete") === "true";
+
+
+            if (!unit00Done) {
+
+                location.href =
+                "unit00.html";
+
+                return;
+
+            }
+
+
+            if (upcoming.length > 0) {
+
+                location.href =
+                "planner.html";
+
+                return;
+
+            }
+
+
+            if (mastered.length < 4) {
+
+                location.href =
+                "flashcards.html";
+
+                return;
+
+            }
+
+
+            location.href =
+            "focus.html";
+
+        }
+    );
+
+}
+/* ---------- Nova ---------- */
+
+const nova =
+document.getElementById("novaText");
+
+
+if (nova) {
+
+    if (upcoming.length > 0) {
+
+        nova.textContent =
+        "Your next study session is planned. You've got this! 🌟";
+
+    }
+
+    else if (focusSessions > 0) {
+
+        nova.textContent =
+        "Nice work on those focus sessions! What small task shall we tackle next? 🧪";
+
+    }
+
+    else {
+
+        nova.textContent =
+        "Ready for today's science adventure? Pick one small task to start.";
+
+    }
+
+}
+
+})();
+
+</script>
+
 
 </body>
+
 </html>
