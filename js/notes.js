@@ -114,3 +114,125 @@ if (unit01Notes) {
     );
 
 }
+// ======================================
+// 🛡️ STUDY DATA BACKUP
+// ======================================
+
+const backupDataButton =
+document.getElementById("backupDataButton");
+
+if (backupDataButton) {
+
+    backupDataButton.addEventListener(
+        "click",
+        function() {
+
+            const backup = {};
+
+            for (let i = 0; i < localStorage.length; i++) {
+
+                const key = localStorage.key(i);
+
+                backup[key] =
+                localStorage.getItem(key);
+
+            }
+
+            const backupFile =
+            new Blob(
+                [JSON.stringify(backup, null, 2)],
+                { type: "application/json" }
+            );
+
+            const downloadLink =
+            document.createElement("a");
+
+            downloadLink.href =
+            URL.createObjectURL(backupFile);
+
+            downloadLink.download =
+            "science-companion-backup.json";
+
+            downloadLink.click();
+
+            URL.revokeObjectURL(
+                downloadLink.href
+            );
+
+        }
+    );
+
+}
+// ======================================
+// ♻️ RESTORE STUDY DATA
+// ======================================
+
+const restoreDataButton =
+document.getElementById("restoreDataButton");
+
+const restoreDataFile =
+document.getElementById("restoreDataFile");
+
+if (restoreDataButton && restoreDataFile) {
+
+    restoreDataButton.addEventListener(
+        "click",
+        function() {
+
+            const file =
+            restoreDataFile.files[0];
+
+            if (!file) {
+
+                alert("📁 Choose a Science Companion backup file first.");
+
+                return;
+
+            }
+
+            const reader =
+            new FileReader();
+
+            reader.onload =
+            function(event) {
+
+                try {
+
+                    const backup =
+                    JSON.parse(event.target.result);
+
+                    Object.keys(backup).forEach(
+                        function(key) {
+
+                            localStorage.setItem(
+                                key,
+                                backup[key]
+                            );
+
+                        }
+                    );
+
+                    alert(
+                        "🎉 Backup restored! Science Companion will now refresh."
+                    );
+
+                    location.reload();
+
+                }
+
+                catch (error) {
+
+                    alert(
+                        "⚠️ That file could not be restored."
+                    );
+
+                }
+
+            };
+
+            reader.readAsText(file);
+
+        }
+    );
+
+}
