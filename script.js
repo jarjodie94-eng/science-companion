@@ -625,21 +625,30 @@ function updateDashboard() {
 
     // Units completed
 
-    const unitsCompleted =
-        localStorage.getItem("unit00Complete")
-        ? 1
-        : 0;
+let unitsCompleted = 0;
 
-    const unitText =
-        document.getElementById("statsUnits");
+if (
+    localStorage.getItem("unit00Complete") === "true"
+) {
+    unitsCompleted++;
+}
 
-    if (unitText) {
+if (
+    localStorage.getItem("unit01Complete") === "true"
+) {
+    unitsCompleted++;
+}
 
-        unitText.textContent =
-            "📖 Units Completed: " + unitsCompleted;
+const unitText =
+document.getElementById("statsUnits");
 
-    }
+if (unitText) {
 
+    unitText.textContent =
+    "📖 Units Completed: " +
+    unitsCompleted;
+
+}
 
     // Quizzes passed
 

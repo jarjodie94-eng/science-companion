@@ -210,7 +210,21 @@ style="width:100%;">
 
 </section>
 
+<section class="card">
 
+<h2>🏁 Complete Unit 01</h2>
+
+<p>
+Finish the Unit 01 lessons and get 3/3 on the quiz to complete this unit.
+</p>
+
+<button id="completeUnit01Button">
+✅ Complete Unit 01
+</button>
+
+<p id="unit01CompleteMessage"></p>
+
+</section>
 </main>
 
 
@@ -277,6 +291,70 @@ function checkCarefulObservation(answer) {
         "💡 Not quite. 'Looks healthy' is vague. A better observation gives specific details you can record.";
 
     }
+
+}
+const completeUnit01Button =
+document.getElementById("completeUnit01Button");
+
+const unit01CompleteMessage =
+document.getElementById("unit01CompleteMessage");
+
+if (completeUnit01Button) {
+
+    completeUnit01Button.addEventListener(
+        "click",
+        function() {
+
+            const quizBest =
+            Number(
+                localStorage.getItem("unit01QuizBest")
+            ) || 0;
+
+            if (quizBest < 3) {
+
+                unit01CompleteMessage.textContent =
+                "🧠 Get 3/3 on the Unit 01 quiz first.";
+
+                return;
+
+            }
+
+            localStorage.setItem(
+                "unit01Complete",
+                "true"
+            );
+
+            unit01CompleteMessage.textContent =
+            "🎉 Unit 01 complete!";
+
+            completeUnit01Button.disabled = true;
+
+            completeUnit01Button.textContent =
+            "✅ Unit 01 Completed";
+
+            if (typeof addXP === "function") {
+
+                addXP(50);
+
+            }
+
+        }
+    );
+
+}
+
+
+if (
+    localStorage.getItem("unit01Complete") === "true"
+) {
+
+    completeUnit01Button.disabled = true;
+
+    completeUnit01Button.textContent =
+    "✅ Unit 01 Completed";
+
+    unit01CompleteMessage.textContent =
+    "🎉 Unit 01 complete!";
 
 }
 </script>

@@ -12,7 +12,17 @@
 
 </head>
 
+
 <body>
+
+
+<header class="hero">
+
+<h1>🧠 Unit 01 Quiz</h1>
+
+<p>S111 — Science and Observation</p>
+
+</header>
 
 
 <nav class="navbar">
@@ -34,48 +44,149 @@
 </nav>
 
 
-<header class="hero">
-
-<h1>🧠 Unit 01 Quiz</h1>
-
-<p>S111 — Science and Observation</p>
-
-</header>
-
-
 <main class="dashboard">
+
 
 <section class="card">
 
-<h2>🧪 Ready to test yourself?</h2>
+<h2>⭐ Your Best Score</h2>
 
-<p>
-This quiz will check what you've learned about scientific observations.
+<p id="quiz01BestScore">
+No attempts yet
 </p>
 
-<h3>Question 1 of 3</h3>
+</section>
+
+
+<!-- QUESTION 1 -->
+
+<section class="card">
+
+<h2>Question 1 of 3 👀</h2>
 
 <p>
-<strong>Which of these is an observation rather than an interpretation?</strong>
+<strong>
+Which of these is an observation rather than an interpretation?
+</strong>
 </p>
 
-<button type="button" onclick="checkQuiz01Question1('a')">
+<button type="button" onclick="answerQuiz01(1, 'a')">
 A) The plant is unhealthy.
 </button>
 
 <br><br>
 
-<button type="button" onclick="checkQuiz01Question1('b')">
+<button type="button" onclick="answerQuiz01(1, 'b')">
 B) The plant has 6 green leaves.
 </button>
 
 <br><br>
 
-<button type="button" onclick="checkQuiz01Question1('c')">
+<button type="button" onclick="answerQuiz01(1, 'c')">
 C) The plant needs more sunlight.
 </button>
 
-<p id="quiz01Question1Result"></p>
+<p id="quiz01Result1"></p>
+
+</section>
+
+
+<!-- QUESTION 2 -->
+
+<section class="card">
+
+<h2>Question 2 of 3 🔢</h2>
+
+<p>
+<strong>
+Which of these is a quantitative observation?
+</strong>
+</p>
+
+<button type="button" onclick="answerQuiz01(2, 'a')">
+A) The liquid is blue.
+</button>
+
+<br><br>
+
+<button type="button" onclick="answerQuiz01(2, 'b')">
+B) The liquid feels warm.
+</button>
+
+<br><br>
+
+<button type="button" onclick="answerQuiz01(2, 'c')">
+C) The liquid is 24°C.
+</button>
+
+<p id="quiz01Result2"></p>
+
+</section>
+
+
+<!-- QUESTION 3 -->
+
+<section class="card">
+
+<h2>Question 3 of 3 🔎</h2>
+
+<p>
+<strong>
+Which is the clearest scientific observation?
+</strong>
+</p>
+
+<button type="button" onclick="answerQuiz01(3, 'a')">
+A) The plant looks nice.
+</button>
+
+<br><br>
+
+<button type="button" onclick="answerQuiz01(3, 'b')">
+B) The plant seems healthy.
+</button>
+
+<br><br>
+
+<button type="button" onclick="answerQuiz01(3, 'c')">
+C) The plant is 18 cm tall and has 6 green leaves.
+</button>
+
+<p id="quiz01Result3"></p>
+
+</section>
+
+
+<!-- FINISH -->
+
+<section class="card">
+
+<h2>🏁 Finish Quiz</h2>
+
+<button type="button" id="submitQuiz01Button">
+✅ Submit Quiz
+</button>
+
+&nbsp;
+
+<button type="button" id="retryQuiz01Button">
+🔁 Try Again
+</button>
+
+<h2 id="quiz01FinalResult"></h2>
+
+<p id="quiz01Reward"></p>
+
+</section>
+
+
+<section class="card">
+
+<h2>🧪 Nova Says</h2>
+
+<p id="quiz01Nova">
+Take your time and think about what was actually observed or measured.
+</p>
 
 </section>
 
@@ -84,10 +195,300 @@ C) The plant needs more sunlight.
 ⬅ Back to Unit 01
 </button>
 
+
 </main>
 
 
 <script src="script.js"></script>
+
+
+<script>
+
+/* ======================================
+   UNIT 01 QUIZ
+====================================== */
+
+let quiz01Answers = {
+    1: null,
+    2: null,
+    3: null
+};
+
+
+const quiz01Correct = {
+    1: "b",
+    2: "c",
+    3: "c"
+};
+
+
+function answerQuiz01(question, answer) {
+
+    quiz01Answers[question] = answer;
+
+    const result =
+    document.getElementById(
+        "quiz01Result" + question
+    );
+
+
+    if (answer === quiz01Correct[question]) {
+
+        result.textContent =
+        "✅ Correct!";
+
+    }
+
+    else {
+
+        if (question === 1) {
+
+            result.textContent =
+            "💡 Not quite. Look for something that was directly seen or counted.";
+
+        }
+
+        if (question === 2) {
+
+            result.textContent =
+            "💡 Not quite. Quantitative observations contain numbers or measurements.";
+
+        }
+
+        if (question === 3) {
+
+            result.textContent =
+            "💡 Not quite. Scientific observations should be clear and specific.";
+
+        }
+
+    }
+
+}
+
+
+function showQuiz01BestScore() {
+
+    const best =
+    Number(
+        localStorage.getItem("unit01QuizBest")
+    ) || 0;
+
+
+    const bestText =
+    document.getElementById(
+        "quiz01BestScore"
+    );
+
+
+    if (best === 0) {
+
+        bestText.textContent =
+        "No attempts yet";
+
+    }
+
+    else {
+
+        bestText.textContent =
+        "⭐ Best score: " +
+        best +
+        " / 3";
+
+    }
+
+}
+
+
+document
+.getElementById("submitQuiz01Button")
+.addEventListener("click", function() {
+
+    if (
+        quiz01Answers[1] === null ||
+        quiz01Answers[2] === null ||
+        quiz01Answers[3] === null
+    ) {
+
+        document.getElementById(
+            "quiz01FinalResult"
+        ).textContent =
+        "⚠️ Answer all 3 questions first.";
+
+        return;
+
+    }
+
+
+    let score = 0;
+
+
+    if (quiz01Answers[1] === quiz01Correct[1]) {
+        score++;
+    }
+
+    if (quiz01Answers[2] === quiz01Correct[2]) {
+        score++;
+    }
+
+    if (quiz01Answers[3] === quiz01Correct[3]) {
+        score++;
+    }
+
+
+    const finalResult =
+    document.getElementById(
+        "quiz01FinalResult"
+    );
+
+
+    const nova =
+    document.getElementById(
+        "quiz01Nova"
+    );
+
+
+    const reward =
+    document.getElementById(
+        "quiz01Reward"
+    );
+
+
+    finalResult.textContent =
+    "⭐ Score: " +
+    score +
+    " / 3";
+
+
+    const oldBest =
+    Number(
+        localStorage.getItem(
+            "unit01QuizBest"
+        )
+    ) || 0;
+
+
+    if (score > oldBest) {
+
+        localStorage.setItem(
+            "unit01QuizBest",
+            score
+        );
+
+    }
+
+
+    if (score === 3) {
+
+        nova.textContent =
+        "🎉 Brilliant! You've mastered the Unit 01 observation basics.";
+
+        const alreadyRewarded =
+        localStorage.getItem(
+            "unit01QuizRewarded"
+        ) === "true";
+
+
+        if (!alreadyRewarded) {
+
+            if (typeof addXP === "function") {
+
+                addXP(30);
+
+            }
+
+            localStorage.setItem(
+                "unit01QuizRewarded",
+                "true"
+            );
+
+            reward.textContent =
+            "🏆 Perfect score! +30 XP";
+
+        }
+
+        else {
+
+            reward.textContent =
+            "✅ Perfect score! XP reward already collected.";
+
+        }
+
+    }
+
+    else if (score === 2) {
+
+        nova.textContent =
+        "🌟 Great progress! Review the question you missed and try again.";
+
+        reward.textContent = "";
+
+    }
+
+    else {
+
+        nova.textContent =
+        "🌱 No problem. Review your Unit 01 lessons and flashcards, then have another go.";
+
+        reward.textContent = "";
+
+    }
+
+
+    showQuiz01BestScore();
+
+});
+
+
+document
+.getElementById("retryQuiz01Button")
+.addEventListener("click", function() {
+
+    quiz01Answers = {
+        1: null,
+        2: null,
+        3: null
+    };
+
+
+    document.getElementById(
+        "quiz01Result1"
+    ).textContent = "";
+
+    document.getElementById(
+        "quiz01Result2"
+    ).textContent = "";
+
+    document.getElementById(
+        "quiz01Result3"
+    ).textContent = "";
+
+    document.getElementById(
+        "quiz01FinalResult"
+    ).textContent = "";
+
+    document.getElementById(
+        "quiz01Reward"
+    ).textContent = "";
+
+
+    document.getElementById(
+        "quiz01Nova"
+    ).textContent =
+    "🧪 Fresh attempt! Think carefully about each observation.";
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
+
+
+showQuiz01BestScore();
+
+</script>
 
 
 </body>

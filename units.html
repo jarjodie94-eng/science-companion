@@ -342,7 +342,30 @@ else {
     "🧪 Your next step is Unit 00. A short study session is enough — consistency matters more than doing everything at once.";
 
 }
+const completedUnitsText =
+document.getElementById("moduleCompleted");
 
+if (completedUnitsText) {
+
+    let completedUnits = 0;
+
+    if (
+        localStorage.getItem("unit00Complete") === "true"
+    ) {
+        completedUnits++;
+    }
+
+    if (
+        localStorage.getItem("unit01Complete") === "true"
+    ) {
+        completedUnits++;
+    }
+
+    completedUnitsText.textContent =
+    "📚 Units completed: " +
+    completedUnits;
+
+}
 </script>
 
 
